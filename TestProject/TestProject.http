@@ -1,0 +1,91 @@
+@TestProject_HostAddress = http://localhost:5043
+
+### =========================================================================
+### EMPLOYEE ENDPOINTS (/api/Employee)
+### =========================================================================
+
+### 1. Upsert Employee: INSERT New Record (Pass EmployeeId = null or omit it)
+POST {{TestProject_HostAddress}}/api/Employee
+Content-Type: application/json
+
+{
+  "firstName": "Gayashan",
+  "lastName": "Perera",
+  "email": "gayashan.perera@example.com",
+  "phoneNumber": "+94-77-1234567",
+  "dateOfBirth": "1995-05-12",
+  "gender": "Male",
+  "epfNo": "EPF-9901",
+  "jobTitle": "Lead Software Engineer",
+  "department": "Technology",
+  "hireDate": "2024-01-10",
+  "employmentStatus": "Full-Time",
+  "salary": 180000.00,
+  "isActive": true
+}
+
+### 2. Upsert Employee: UPDATE Existing Record (Pass EmployeeId)
+POST {{TestProject_HostAddress}}/api/Employee
+Content-Type: application/json
+
+{
+  "employeeId": 1,
+  "firstName": "Gayashan",
+  "lastName": "Perera",
+  "email": "gayashan.perera@example.com",
+  "phoneNumber": "+94-77-7654321",
+  "dateOfBirth": "1995-05-12",
+  "gender": "Male",
+  "epfNo": "EPF-9901",
+  "jobTitle": "Principal Architect",
+  "department": "Technology",
+  "hireDate": "2024-01-10",
+  "employmentStatus": "Full-Time",
+  "salary": 220000.00,
+  "isActive": true
+}
+
+### =========================================================================
+### ADMIN / USER ENDPOINTS (/api/Admin/user)
+### =========================================================================
+
+### 3. Upsert User: INSERT New User (action = 'I', omit loginID or pass null)
+POST {{TestProject_HostAddress}}/api/Admin/user
+Content-Type: application/json
+
+{
+  "action": "I",
+  "userName": "johndoe",
+  "fullName": "Johnathan Doe",
+  "userTitle": "Senior Analyst",
+  "displayName": "John D.",
+  "contactNumber": "+94-77-5551234",
+  "email": "john.doe@example.com",
+  "password": "$2a$11$sampleSecurePasswordHashOrPlainValue",
+  "isLockedOut": false,
+  "isLockedPermanently": false,
+  "isPwdChanged": false,
+  "failedLoginAttemptCount": 0,
+  "userId": "admin-portal"
+}
+
+### 4. Upsert User: UPDATE Existing User (action = 'U', provide loginID)
+POST {{TestProject_HostAddress}}/api/Admin/user
+Content-Type: application/json
+
+{
+  "action": "U",
+  "loginID": 1,
+  "userName": "johndoe",
+  "fullName": "Johnathan Doe - Updated",
+  "userTitle": "Lead Analyst",
+  "displayName": "John Doe",
+  "contactNumber": "+94-77-5559999",
+  "email": "john.doe@example.com",
+  "password": null,
+  "isLockedOut": false,
+  "isLockedPermanently": false,
+  "isPwdChanged": true,
+  "failedLoginAttemptCount": 0,
+  "userId": "admin-portal"
+}
